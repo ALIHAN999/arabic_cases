@@ -5,42 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Падежи в арабском языке (الإعراب)</title>
     
-    <!-- Google Fonts: Noto Naskh Arabic и Plus Jakarta Sans -->
+    <!-- Подключаем Noto Naskh Arabic и Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Базовая тёмная палитра */
-            --bg-color: #0B0F17;
-            --card-bg: #161C26;
-            --card-border: #232D3F;
-            --sub-card-bg: #10151E;
-            --text-main: #F1F5F9;
-            --text-muted: #94A3B8;
+            --bg-color: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
             
-            /* Цветовые темы падежей (неоновый пастельный акцент для тёмной темы) */
-            --raf-color: #34D399;        /* Именительный (Раф') - Изумрудный */
-            --raf-bg: rgba(16, 185, 129, 0.12);
-            --raf-border: rgba(16, 185, 129, 0.25);
+            /* Цветовая палитра падежей */
+            --raf-color: #059669;
+            --raf-bg: #ECFDF5;
+            --nasb-color: #D97706;
+            --nasb-bg: #FFFBEB;
+            --jarr-color: #E11D48;
+            --jarr-bg: #FFF1F2;
+            --dual-color: #4F46E5;
+            --dual-bg: #EEF2FF;
             
-            --nasb-color: #FBBF24;       /* Винительный (Насб) - Тёплый янтарь */
-            --nasb-bg: rgba(245, 158, 11, 0.12);
-            --nasb-border: rgba(245, 158, 11, 0.25);
-            
-            --jarr-color: #FB7185;       /* Родительный (Джарр) - Гранатовый коралл */
-            --jarr-bg: rgba(244, 63, 94, 0.12);
-            --jarr-border: rgba(244, 63, 94, 0.25);
-            
-            --dual-color: #818CF8;       /* Совмещённый (Насб + Джарр) - Индиго */
-            --dual-bg: rgba(99, 102, 241, 0.12);
-            --dual-border: rgba(99, 102, 241, 0.25);
-            
-            --accent: #2DD4BF;
+            --primary: #0F172A;
+            --accent: #0D9488;
             --radius-lg: 18px;
             --radius-md: 12px;
-            --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.35);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 8px 20px rgba(0,0,0,0.06);
         }
 
         * {
@@ -70,12 +62,11 @@
         header {
             text-align: center;
             padding: 24px 16px;
-            background: linear-gradient(145deg, #161F30 0%, #0F1420 100%);
-            border: 1px solid var(--card-border);
+            background: linear-gradient(145deg, #1E293B 0%, #0F172A 100%);
             border-radius: var(--radius-lg);
             color: #fff;
             margin-bottom: 16px;
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-md);
             position: relative;
             overflow: hidden;
         }
@@ -88,14 +79,14 @@
             font-family: 'Noto Naskh Arabic', serif;
             font-size: 5rem;
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.04);
             pointer-events: none;
             user-select: none;
         }
 
         .tagline {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255,255,255,0.12);
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.72rem;
@@ -111,7 +102,6 @@
             font-weight: 800;
             margin-bottom: 6px;
             letter-spacing: -0.5px;
-            color: #F8FAFC;
         }
 
         header p {
@@ -121,29 +111,27 @@
 
         /* Интро */
         .intro-box {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-left: 4px solid var(--accent);
+            background: #fff;
             border-radius: var(--radius-md);
             padding: 14px 16px;
             margin-bottom: 16px;
             box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--accent);
             font-size: 0.86rem;
-            color: #CBD5E1;
+            color: #334155;
         }
 
         /* Навигационные табы */
         .nav-tabs {
             display: flex;
-            background: #111722;
+            background: #E2E8F0;
             padding: 4px;
-            border: 1px solid var(--card-border);
             border-radius: var(--radius-md);
             margin-bottom: 16px;
             position: sticky;
             top: 10px;
             z-index: 30;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
         }
 
         .tab-btn {
@@ -155,26 +143,26 @@
             font-size: 0.82rem;
             font-weight: 700;
             color: #64748B;
-            border-radius: 9px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: center;
         }
 
         .tab-btn.active {
-            background: #1E2738;
-            color: #F8FAFC;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            background: #FFFFFF;
+            color: var(--primary);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
         }
 
-        /* Карточка падежа */
+        /* Карточка */
         .case-card {
             background: var(--card-bg);
-            border: 1px solid var(--card-border);
             border-radius: var(--radius-lg);
             padding: 16px;
             margin-bottom: 14px;
             box-shadow: var(--shadow-sm);
+            border: 1px solid #F1F5F9;
         }
 
         .case-header {
@@ -190,11 +178,11 @@
             gap: 12px;
         }
 
-        /* Контейнер с интервалом между русским и арабским названием */
+        /* Контейнер для текста заголовков с добавленным интервалом */
         .case-title-text {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 6px; /* Интервал между русской строкой и арабской */
         }
 
         .badge {
@@ -209,7 +197,6 @@
             font-weight: 700;
             flex-shrink: 0;
             margin-top: 2px;
-            border: 1px solid transparent;
         }
 
         .case-title {
@@ -221,22 +208,21 @@
         .arabic-term {
             font-family: 'Noto Naskh Arabic', serif;
             font-size: 1.2rem;
-            color: #94A3B8;
+            color: #475569;
             font-weight: 700;
             line-height: 1.4;
         }
 
-        /* Цветовое оформление карточек */
-        .raf .badge { background: var(--raf-bg); color: var(--raf-color); border-color: var(--raf-border); }
+        .raf .badge { background: var(--raf-bg); color: var(--raf-color); }
         .raf .case-title { color: var(--raf-color); }
 
-        .nasb .badge { background: var(--nasb-bg); color: var(--nasb-color); border-color: var(--nasb-border); }
+        .nasb .badge { background: var(--nasb-bg); color: var(--nasb-color); }
         .nasb .case-title { color: var(--nasb-color); }
 
-        .jarr .badge { background: var(--jarr-bg); color: var(--jarr-color); border-color: var(--jarr-border); }
+        .jarr .badge { background: var(--jarr-bg); color: var(--jarr-color); }
         .jarr .case-title { color: var(--jarr-color); }
 
-        .dual-case .badge { background: var(--dual-bg); color: var(--dual-color); border-color: var(--dual-border); }
+        .dual-case .badge { background: var(--dual-bg); color: var(--dual-color); }
         .dual-case .case-title { color: var(--dual-color); }
 
         .case-desc {
@@ -249,16 +235,16 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--sub-card-bg);
+            background: #F8FAFC;
             padding: 8px 12px;
             border-radius: 10px;
             margin-bottom: 12px;
-            border: 1px dashed #2A364B;
+            border: 1px dashed #CBD5E1;
         }
 
         .ending-sign {
             font-size: 0.83rem;
-            color: #CBD5E1;
+            color: #334155;
         }
 
         .arabic-sign {
@@ -269,13 +255,13 @@
             direction: rtl;
         }
 
-        /* Блоки с примерами */
+        /* Блоки с примерами предложений */
         .example-block {
-            background: var(--sub-card-bg);
+            background: #F8FAFC;
             border-radius: 10px;
             padding: 10px 12px;
             margin-top: 8px;
-            border-left: 3px solid #334155;
+            border-left: 3px solid #CBD5E1;
         }
 
         .example-label {
@@ -292,7 +278,7 @@
             direction: rtl;
             text-align: right;
             line-height: 2.1;
-            color: #F8FAFC;
+            color: #0F172A;
             font-weight: 500;
         }
 
@@ -302,14 +288,14 @@
             font-weight: 700;
         }
         
-        .raf .highlight { background-color: rgba(16, 185, 129, 0.22); color: #6EE7B7; }
-        .nasb .highlight { background-color: rgba(245, 158, 11, 0.22); color: #FCD34D; }
-        .jarr .highlight { background-color: rgba(244, 63, 94, 0.22); color: #FDA4AF; }
-        .dual-case .highlight { background-color: rgba(99, 102, 241, 0.25); color: #A5B4FC; }
+        .raf .highlight { background-color: #D1FAE5; color: #065F46; }
+        .nasb .highlight { background-color: #FEF3C7; color: #92400E; }
+        .jarr .highlight { background-color: #FFE4E6; color: #9F1239; }
+        .dual-case .highlight { background-color: #E0E7FF; color: #3730A3; }
 
         .translation {
             font-size: 0.8rem;
-            color: #94A3B8;
+            color: #64748B;
             margin-top: 4px;
         }
 
@@ -321,7 +307,7 @@
             font-size: 0.95rem;
             font-weight: 800;
             margin-bottom: 10px;
-            color: #E2E8F0;
+            color: var(--primary);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -350,31 +336,20 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Заметки-подсказки */
         .pro-tip {
-            background: rgba(30, 58, 138, 0.2);
+            background: #EFF6FF;
             border-radius: var(--radius-md);
             padding: 14px;
-            border: 1px solid rgba(59, 130, 246, 0.25);
+            border: 1px solid #BFDBFE;
             font-size: 0.82rem;
-            color: #93C5FD;
+            color: #1E40AF;
             margin-top: 10px;
         }
 
         .pro-tip strong {
             display: block;
             margin-bottom: 4px;
-            color: #BFDBFE;
-        }
-
-        .pro-tip-warning {
-            background: rgba(180, 83, 9, 0.15);
-            border-color: rgba(245, 158, 11, 0.25);
-            color: #FDE68A;
-        }
-
-        .pro-tip-warning strong {
-            color: #FCD34D;
+            color: #1E3A8A;
         }
     </style>
 </head>
@@ -455,20 +430,20 @@
                     </div>
                 </div>
             </div>
-            <p class="case-desc">Роль: после предлогов (حُرُوف الجَرّ) или второй элемент идафы (مُضَاف إِلَيْهِ).</p>
+            <p class="case-desc">Роль: после предлогов (حُرُوف الجَرّ) или второй элементы идафы (مُضَاف إِلَيْهِ).</p>
             <div class="ending-pill">
                 <span class="ending-sign">Знак: <strong>Кясра / Танвин-кясра</strong></span>
                 <span class="arabic-sign">ـِ / ــٍ</span>
             </div>
             <div class="example-block">
                 <div class="arabic-text">سَلَّمْتُ عَلَى <span class="highlight">المُعَلِّمِ</span></div>
-                <div class="translation">«Я поздоровался с учителем»<br> (аль-му‘аллими)</div>
+                <div class="translation">«Я поздоровался с учителем» (аль-му‘аллими)</div>
             </div>
         </div>
 
         <div class="pro-tip">
             <strong>💡 Важно о танвине:</strong>
-            Если у слова есть определённый артикль <strong>الـ</strong> или оно стоит в идафе, пишется одинарная огласовка ( ـُ / ـَ / ـِ ). Если артикля нет и слово неопределённое — ставится удвоенная<br> огласовка / танвин ( ـٌ / ـً / ـٍ ).
+            Если у слова есть определённый артикль ال или оно стоит в идафе, ставится одна огласовка<br> ( ـُ / ـَ / ـِ ). Если артикля нет и слово неопределённое — ставится удвоенная огласовка / танвин ( ـٌ / ـً / ـٍ ).
         </div>
     </section>
 
@@ -551,6 +526,114 @@
                         <span class="arabic-term">ـَاتِ</span>
                     </div>
                 </div>
+                <p class="case-desc">⚠️ <strong>Главное исключение:</strong> целое женское число <u>никогда не принимает фатху</u>. В винительном падеже вместо неё ставится кясра.</p>
+                <div class="ending-pill">
+                    <span class="ending-sign">Знак: <strong>Кясра</strong> (заменяет фатху)</span>
+                    <span class="arabic-sign">ـَاتِ / ـَاتٍ</span>
+                </div>
+
+                <div class="example-block">
+                    <div class="example-label">Пример Винительного (Насб):</div>
+                    <div class="arabic-text">رَأَيْتُ <span class="highlight">الطَّالِبَاتِ</span></div>
+                    <div class="translation">«Я увидел студенток» (кясра вместо фатхи)</div>
+                </div>
+
+                <div class="example-block">
+                    <div class="example-label">Пример Родительного (Джарр):</div>
+                    <div class="arabic-text">مَرَرْتُ بِـ<span class="highlight">الطَّالِبَاتِ</span></div>
+                    <div class="translation">«Я прошёл мимо студенток» (кясра после предлога بِـ)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- В. Ломаное множественное -->
+        <div class="plural-subgroup">
+            <div class="plural-subgroup-title">3. Ломаное множественное (جَمْعُ التَّكْسِيرِ)</div>
+            <p class="case-desc" style="margin-bottom: 12px;">
+                Склоняется <strong>огласовками в точности как единственное число</strong>:
+            </p>
+
+            <div class="case-card raf">
+                <div class="case-header">
+                    <div class="case-title-text">
+                        <div class="case-title">Именительный (Раф')</div>
+                        <span class="arabic-term">الضَّمَّةُ (Дамма)</span>
+                    </div>
+                    <span class="arabic-sign">ـُ / ــٌ</span>
+                </div>
+                <div class="example-block">
+                    <div class="arabic-text">حَضَرَ <span class="highlight">الطُّلَّابُ</span></div>
+                    <div class="translation">«Студенты пришли» (ат-тулла́бу)</div>
+                </div>
+            </div>
+
+            <div class="case-card nasb">
+                <div class="case-header">
+                    <div class="case-title-text">
+                        <div class="case-title">Винительный (Насб)</div>
+                        <span class="arabic-term">الفَتْحَةُ (Фатха)</span>
+                    </div>
+                    <span class="arabic-sign">ـَ / ــً</span>
+                </div>
+                <div class="example-block">
+                    <div class="arabic-text">رَأَيْتُ <span class="highlight">الطُّلَّابَ</span></div>
+                    <div class="translation">«Я увидел студентов» (ат-тулла́ба)</div>
+                </div>
+            </div>
+
+            <div class="case-card jarr">
+                <div class="case-header">
+                    <div class="case-title-text">
+                        <div class="case-title">Родительный (Джарр)</div>
+                        <span class="arabic-term">الكَسْرَةُ (Кясра)</span>
+                    </div>
+                    <span class="arabic-sign">ـِ / ــٍ</span>
+                </div>
+                <div class="example-block">
+                    <div class="arabic-text">سَلَّمْتُ عَلَى <span class="highlight">الطُّلَّابِ</span></div>
+                    <div class="translation">«Я поздоровался со студентами» (ат-тулла́би)</div>
+                </div>
+            </div>
+
+            <div class="pro-tip" style="background:#FFFBEB; border-color:#FDE68A; color:#92400E;">
+                <strong>⚠️ Примечание о двухпадежных именах:</strong>
+                Некоторые формы ломаного множественного числа (например, модели `مَفَاعِل` вроде `مَسَاجِدُ` — мечети) относятся к <em>мамну‘ мин ас-сарф</em>: они не принимают танвин, а в родительном падеже (без артикля `الـ`) принимают фатху вместо кясры<br> (`فِي مَسَاجِدَ`).
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTabId = btn.getAttribute('data-tab');
+
+                tabButtons.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+
+                contentSections.forEach(section => {
+                    if (section.id === targetTabId) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
                 <p class="case-desc">⚠️ <strong>Главное исключение:</strong> целое женское число <u>никогда не принимает фатху</u>. В винительном падеже вместо неё ставится кясра.</p>
                 <div class="ending-pill">
                     <span class="ending-sign">Знак: <strong>Кясра</strong> (заменяет фатху)</span>
